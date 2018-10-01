@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="KTAS Test Automation Report" thread-count="1">
+    
+    <listeners>
+		<listener class-name="com.kony.ktas.reports.KReports.ExtentReportListener" />
+		<listener class-name="com.kony.ktas.reports.KReports.ExcelListener" />
+	</listeners>
+    
+	<test group-by-instances="true" name="1">
+		<parameter name="AppType" value="Mobile" />
+		<parameter name="DeviceID" value="1" />
+		<parameter name="MOBILE_OS" value="Android" />
+
+		<groups preserve-order="true">
+			<run>
+				<include name="Sanity" />
+			</run>
+		</groups>
+
+		<classes>
+			<class name="com.kony.ktas.suites.WelcomeScreenSuite" />
+		</classes>
+	</test>
+
+</suite>

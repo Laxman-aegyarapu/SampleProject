@@ -1,0 +1,165 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.kony.ktas.sauceLabs</groupId>
+	<artifactId>sauceLabs</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+
+	<name>sauceLabs</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<jre.level>1.8</jre.level>
+		<jdk.level>1.8</jdk.level>
+	</properties>
+
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<version>3.5.1</version>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${jdk.level}</source>
+					<target>${jdk.level}</target>
+					<fork>true</fork>
+					<executable>C:\Program Files\Java\jdk1.8.0_102\bin\javac</executable>
+					<additionalClasspathElements>
+						<additionalClasspathElement>/resources/modLibs/*.jar</additionalClasspathElement>
+						<additionalClasspathElement>Downloads/*.jar</additionalClasspathElement>
+					</additionalClasspathElements>
+				</configuration>
+			</plugin>
+
+                <!-- <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<version>2.22.0</version>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+	                <threadCount>40</threadCount>
+                    <redirectTestOutputToFile>false</redirectTestOutputToFile>
+					<suiteXmlFiles>
+						<suiteXmlFile>./src/test/resources/testNg.xml</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<version>2.22.0</version>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+				<useSystemClassLoader>false</useSystemClassLoader>
+					<systemPropertyVariables>
+						<test.process>NA</test.process>
+						<db.selection>properties</db.selection>
+						<App.Type>mobile</App.Type>
+					</systemPropertyVariables>
+					<suiteXmlFiles>
+						<suiteXmlFile>./src/test/resources/testNg.xml</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<dependencies>
+	
+	  <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
+        </dependency>
+      <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.saucelabs</groupId>
+            <artifactId>sauce_testng</artifactId>
+            <version>2.1.23</version>
+            <scope>test</scope>
+        </dependency>
+        
+		<dependency>
+			<groupId>io.appium</groupId>
+			<artifactId>java-client</artifactId>
+			<version>5.0.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.relevantcodes</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>2.41.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.9.10</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.kony.ktas.common</groupId>
+			<artifactId>common</artifactId>
+			<version>1.0.2</version>
+			<classifier>jar-with-dependencies</classifier>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/resources/modLibs/common-1.0.2-jar-with-dependencies.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.kony.ktas.mobile.common</groupId>
+			<artifactId>mobile.common</artifactId>
+			<version>1.0.2</version>
+			<classifier>jar-with-dependencies</classifier>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/resources/modLibs/mobile.common-1.0.2-jar-with-dependencies.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.kony.ktas.mobile.android</groupId>
+			<artifactId>mobile.android</artifactId>
+			<version>1.0.2</version>
+			<classifier>jar-with-dependencies</classifier>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/resources/modLibs/mobile.android-1.0.2.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.kony.ktas.mobile.ios</groupId>
+			<artifactId>mobile.ios</artifactId>
+			<version>1.0.2</version>
+			<classifier>jar-with-dependencies</classifier>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/resources/modLibs/mobile.ios-1.0.2.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.kony.ktas.reports</groupId>
+			<artifactId>reports</artifactId>
+			<version>1.0.2</version>
+			<classifier>jar-with-dependencies</classifier>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/resources/modLibs/reports-1.0.2-jar-with-dependencies.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>21.0</version>
+		</dependency>
+	</dependencies>
+</project>
